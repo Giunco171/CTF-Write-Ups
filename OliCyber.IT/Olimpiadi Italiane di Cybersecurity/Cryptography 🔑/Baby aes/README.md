@@ -1,6 +1,6 @@
 <!-- CTF Name -->
 <div align="center">
-  <img src="https://raw.githubusercontent.com/Giunco171/CTF-Write-Ups/main/OliCyber.IT/Olimpiadi Italiane di Cybersecurity/Cryptography 🔑/Baby aes/challenge-name.svg" alt="Giovanni Pascuzzi" />
+  <img src="challenge-name.svg" alt="Baby aes" />
 </div>
 
 
