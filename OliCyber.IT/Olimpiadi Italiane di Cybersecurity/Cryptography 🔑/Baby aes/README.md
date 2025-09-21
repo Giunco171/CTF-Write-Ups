@@ -15,7 +15,7 @@
 
 ### 📝 Challenge Description
 The challenge, as the name implies, is a simplified — and deliberately insecure — implementation of the AES block cipher operating in Electronic Code Book (ECB) mode. In particular, _Baby aes_ omits some of AES’s standard round transformations (SubBytes, ShiftRows, MixColumns, AddRoundKey) and, to make matters worse, uses a key of only two bytes. That tiny keyspace can be trivially brute-forced — and it’s exactly this weakness that the challenge exploits.
-The challenge provides the [_Baby aes_ implementation](BasbyAes.py) and a file containing the [encrypted flag](output_baby_aes.txt).
+The challenge provides the [_Baby aes_ implementation](BabyAes.py) and a file containing the [encrypted flag](output_baby_aes.txt).
 
 <p align="center">
   <img src="Baby_aes_chal.png" alt="Challenge banner" width="300" />
@@ -24,7 +24,7 @@ The challenge provides the [_Baby aes_ implementation](BasbyAes.py) and a file c
 ---
 
 ### 🧠 Thought Process
-First, I examined the [cipher](BasbyAes.py) implementation. The S-box matches the standard AES S-box, so the vulnerability is unlikely to come from the S-box. I also noticed that the `ShiftRows` step has been altered — it behaves more like a `ShiftColumns` permutation. That permutation itself doesn’t seem to introduce the weakness, but I kept it in mind because it will be useful in the exploit. At this stage I glanced over the cryptographic routine:
+First, I examined the [cipher](BabyAes.py) implementation. The S-box matches the standard AES S-box, so the vulnerability is unlikely to come from the S-box. I also noticed that the `ShiftRows` step has been altered — it behaves more like a `ShiftColumns` permutation. That permutation itself doesn’t seem to introduce the weakness, but I kept it in mind because it will be useful in the exploit. At this stage I glanced over the cryptographic routine:
 ```python
 for block in blocks:
         block = xor_with_key(block, key_expanded)
@@ -42,7 +42,7 @@ I hate brute-forcing challenges.
 ---
 
 ### 🔍 Solution
-All steps used to solve the challenge are available in the [exploit](BasbyAes_Exploit.py). Below is a brief summary of the most important points:
+All steps used to solve the challenge are available in the [exploit](BabyAes_Exploit.py). Below is a brief summary of the most important points:
 
 - **Invert S-box**: I used the AES standard inverse S-box to reverse the substitution step.
 - **Invert permutation**: I implemented the inverse of the modified `ShiftColumns` permutation to undo that transformation.
