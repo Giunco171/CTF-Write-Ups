@@ -24,22 +24,29 @@ The challenge, as the name implies, is a simplified — and deliberately insecur
 ---
 
 ### 🧠 Thought Process
-Describe your approach and reasoning:
-- Initial observations  
-- Hypotheses and ideas considered  
-- Dead ends or false leads you explored  
-- Key insight that enabled the solution  
+First, I examined the [cipher](BasbyAes.py) implementation. The S-box matches the standard AES S-box, so the vulnerability is unlikely to come from the S-box. I also noticed that the `ShiftRows` step has been altered — it behaves more like a `ShiftColumns` permutation. That permutation itself doesn’t seem to introduce the weakness, but I kept it in mind because it will be useful in the exploit. At this stage I glanced over the cryptographic routine:
+```python
+for block in blocks:
+        block = xor_with_key(block, key_expanded)
+        block = substitution(block)
+        block = permutation(block)
+        block = xor_with_key(block, key_expanded)
+        ciphertext += block
+```
+At first I suspected the double XOR might cancel out, creating a weakness, but that’s not the case: the substitution/permutation stage between the XORs introduces non-linearity (notably the S-box), so the two XORs do not simply negate each other. Ultimately I concluded that the real weakness is the two-byte key — the keyspace is tiny, so brute-forcing it is feasible (and ultimately necessary) to recover the key.
+
+Not the most fun approach, but sometimes brute force is the practical solution.
+
+I hate brute-forcing challenges.
 
 ---
 
 ### 🔍 Solution
-Step-by-step explanation of how you solved the challenge. Be explicit and reproducible:
+All steps used to solve the challenge are available in the [exploit](BasbyAes_Exploit.py). Below is a brief summary of the most important points:
 
-1. [First step — reconnaissance, commands or hints]  
-2. [Next step — exploitation, decoding, or reversing]  
-3. [Final step — extracting the flag]
-
-Include commands and code snippets where useful:
+- **Invert S-box**: I used the AES standard inverse S-box to reverse the substitution step.
+- **Invert permutation**: I implemented the inverse of the modified `ShiftColumns` permutation to undo that transformation.
+- **Keyspace**: The keyspace contains 256×256=65536 possible keys (integer values 0–65535), which makes brute-force feasible. 
 
 <!-- ```bash
 # Example command
