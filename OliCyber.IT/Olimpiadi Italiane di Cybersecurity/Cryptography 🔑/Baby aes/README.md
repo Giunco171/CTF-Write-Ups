@@ -18,7 +18,7 @@
 The challenge, as the name implies, is a simplified — and deliberately insecure — implementation of the AES block cipher operating in Electronic Code Book (ECB) mode. In particular, _Baby aes_ omits some of AES’s standard round transformations (SubBytes, ShiftRows, MixColumns, AddRoundKey) and, to make matters worse, uses a key of only two bytes. That tiny keyspace can be trivially brute-forced — and it’s exactly this weakness that the challenge exploits.
 
 <p align="center">
-  <img src="images/Baby_aes_chal.png" alt="Challenge banner" width="600" />
+  <img src="Baby_aes_chal.png" alt="Challenge banner" width="300" />
 </p>
 
 ---
