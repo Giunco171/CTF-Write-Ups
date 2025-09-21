@@ -69,7 +69,7 @@ References / helpful links:
 
 ---
 
-### 📚 Lessons Learned
+### 📓 Lessons Learned
 
 - Key takeaways from this challenge
 - Mistakes or pitfalls to avoid next time
