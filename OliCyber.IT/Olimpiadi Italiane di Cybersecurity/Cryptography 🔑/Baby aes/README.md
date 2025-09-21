@@ -75,7 +75,7 @@ Suggested resources:
 
 ---
 
-### 📚 Lessons Learned
+### 📓 Lessons Learned
 
 - **Don’t be fooled by a double XOR** — two XORs cancel each other out only if the operations between them are linear. Non-linear steps (e.g. an S-box) prevent cancellation.
 
