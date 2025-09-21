@@ -9,8 +9,7 @@
 - **Category:** Crypto 🔑<!-- [Crypto / Web / Pwn / Forensics / Misc] -->
 - **Points:**  N/A
 - **Difficulty:** Easy <!-- [Easy / Medium / Hard] -->
-- **Date:** 21-09-2025  
-- **Author / Handle:** Giovanni Pascuzzi (Giunco171)  
+- **Date:** 21-09-2025    
 
 ---
 
@@ -63,35 +62,29 @@ flag{B3ll0_c0n_5oL0_uN_c1cLo}
 
 ### 📚 Tools & Resources
 
-Tools used: `gdb`, `radare2`, `ghidra`, `binwalk`, `python3`, `curl`, etc.
+Tools used: `python3`.
 
-References / helpful links:
-
-- [Reference 1 — short description]
-- [Reference 2 — short description]
+Suggested resources:
+- [Cryptography and Network Security: Principles and Practice - by William Stallings [Chapter 6]](https://mrce.in/ebooks/Cryptography%20&%20Network%20Security%208th%20Ed.pdf). A beautiful book for learning the inner workings of the AES cipher.
 
 ---
 
 ### 📈 Notes / Alternative Approaches
 
-- Other valid approaches (briefly described)
-- Potential optimizations or edge cases to consider
-- Assumptions made while solving
+- N/A
 
 ---
 
 ### 📚 Lessons Learned
 
-- Key takeaways from this challenge
-- Mistakes or pitfalls to avoid next time
-- New tools, commands, or techniques discovered
+- **Don’t be fooled by a double XOR** — two XORs cancel each other out only if the operations between them are linear. Non-linear steps (e.g. an S-box) prevent cancellation.
 
 ---
 
 ### 🤝 Credits
 
-- Challenge author(s): [if known]
+- Challenge author(s): **Angelo942**
 
-- Writeup by: [Your Name / Handle]
+- Writeup by: **Giovanni Pascuzzi (Giunco171)**
 
-- Inspired by / referenced: [other writeups or authors you consulted]
+- Inspired by / referenced: **N/A**
